@@ -11,3 +11,21 @@ Terminal-based C++ application utilizing the nlohmann json library for parsing J
 To run, you need the following libraries:
   - [nlohmann's JSON](https://github.com/nlohmann/json)
   - [httplib](https://github.com/yhirose/cpp-httplib)
+## Repository Guide
+
+```bash
+.
+├── README.md        # this README
+├── LICENSE          # license file
+├── CMakeLists.txt   # CMake file that contains instructions for configuring the build
+├── src
+│   ├── Artist.cpp   # artist class
+│   ├── Artist.h
+│   ├── ArtistFunctions.h
+│   ├── Menu.h      # file that makes app look cool in Terminal ;D
+│   ├── Track.cpp   # track class
+│   ├── Track.h
+│   ├── TrackFunctions.h
+│   └── main.cpp
+
+```
