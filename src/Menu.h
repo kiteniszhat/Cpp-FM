@@ -46,7 +46,7 @@ void displaySearchTracksMenu(const std::string &apiKey)
     std::cout << "    Enter artist name: ";
     std::cin >> artistName;
     Track track(artistName, trackName, apiKey);
-    std::cout << "    " << track.getPlayCount() << std::endl;
+    track.printInfo();
 }
 
 

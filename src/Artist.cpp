@@ -45,32 +45,32 @@ std::string Artist::getApiKey() const
 
 void Artist::printInfo()
 {
-    if (!topAlbums_.empty())
+    if (!getAlbums().empty())
     {
-        std::cout << "\n    Top albums of " << name_ << ":\n";
-        for (size_t i = 0; i < topAlbums_.size(); ++i)
-            std::cout << "        " << i + 1 << ". " << topAlbums_[i] << std::endl;
+        std::cout << "\n    Top albums of " << getName() << ":\n";
+        for (size_t i = 0; i < getAlbums().size(); ++i)
+            std::cout << "        " << i + 1 << ". " << getAlbums()[i] << std::endl;
     }
     else
     {
         std::cerr << "\n    No top albums found." << std::endl;
     }
 
-    if (!topTracks_.empty())
+    if (!getTracks().empty())
     {
-        std::cout << "\n    Top tracks of " << name_ << ":\n";
-        for (size_t i = 0; i < topTracks_.size(); ++i)
-            std::cout << "        " << i + 1 << ". " << topTracks_[i] << std::endl;
+        std::cout << "\n    Top tracks of " << getName() << ":\n";
+        for (size_t i = 0; i < getTracks().size(); ++i)
+            std::cout << "        " << i + 1 << ". " << getTracks()[i] << std::endl;
     }
     else
     {
         std::cerr << "\n    No top tracks found." << std::endl;
     }
-    if (!genres_.empty())
+    if (!getGenres().empty())
     {
-        std::cout << "\n    Genres of " << name_ << ":\n";
+        std::cout << "\n    Genres of " << getName() << ":\n";
         for (size_t i = 0; i < 3; ++i)
-            std::cout << "        " << i + 1 << ". " << genres_[i] << std::endl;
+            std::cout << "        " << i + 1 << ". " << getGenres()[i] << std::endl;
     }
     else
     {
