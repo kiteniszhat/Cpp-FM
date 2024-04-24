@@ -30,6 +30,8 @@ public:
     std::vector<std::string> getTracks() const;
     std::vector<std::string> getGenres() const;
 
+    void setName(const std::string &name);
+
     void printInfo();
 };
 

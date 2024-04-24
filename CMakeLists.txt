@@ -26,8 +26,11 @@ FetchContent_MakeAvailable(httplib)
 add_executable(lastfmAPI
         src/Artist.cpp
         src/Artist.h
-        src/Functions.h
-        src/Menu.h)
+        src/ArtistFunctions.h
+        src/Menu.h
+        src/Track.cpp
+        src/Track.h
+        src/TrackFunctions.h)
 target_include_directories(lastfmAPI PRIVATE ../../../../../src)
 file(GLOB sources "src/*.cpp" "src/*.h")
 target_sources(lastfmAPI PRIVATE ${sources})

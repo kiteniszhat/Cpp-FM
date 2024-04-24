@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include "Artist.h"
+#include "Track.h"
 
 
 void executePowerShellCommand(const char* command)
@@ -39,9 +40,13 @@ void displaySearchArtistMenu(const std::string &apiKey)
 
 void displaySearchTracksMenu(const std::string &apiKey)
 {
-    std::string trackName;
+    std::string trackName, artistName;
     std::cout << "    Enter track name: ";
     std::cin >> trackName;
+    std::cout << "    Enter artist name: ";
+    std::cin >> artistName;
+    Track track(artistName, trackName, apiKey);
+    std::cout << "    " << track.getPlayCount() << std::endl;
 }
 
 

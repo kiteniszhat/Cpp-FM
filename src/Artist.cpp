@@ -3,7 +3,7 @@
 //
 
 #include "Artist.h"
-#include "Functions.h"
+#include "ArtistFunctions.h"
 
 
 Artist::Artist(const std::string &name, const std::string &apiKey) :
@@ -76,6 +76,11 @@ void Artist::printInfo()
     {
         std::cerr << "\n    No genres found." << std::endl;
     }
+}
+
+void Artist::setName(const std::string &name)
+{
+    name_ = name;
 }
 
 
