@@ -23,8 +23,11 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(httplib)
 
-add_executable(lastfmAPI)
-target_include_directories(test1 PRIVATE ../../../../../src)
+add_executable(lastfmAPI
+        src/Artist.cpp
+        src/Artist.h
+        src/Functions.h)
+target_include_directories(lastfmAPI PRIVATE ../../../../../src)
 file(GLOB sources "src/*.cpp" "src/*.h")
 target_sources(lastfmAPI PRIVATE ${sources})
 
