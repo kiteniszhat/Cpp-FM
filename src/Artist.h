@@ -22,11 +22,13 @@ private:
 
 public:
     Artist(const std::string &name, const std::string &apiKey);
+    Artist(const Artist &artist);
 
     std::string getName() const;
-    auto getAlbums() const;
-    auto getTracks() const;
-    auto getGenres() const;
+    std::string getApiKey() const;
+    std::vector<std::string> getAlbums() const;
+    std::vector<std::string> getTracks() const;
+    std::vector<std::string> getGenres() const;
 
     void printInfo();
 };

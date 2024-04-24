@@ -15,13 +15,13 @@ std::vector<std::string> get_artist_top_albums(const std::string &name, const st
     std::vector<std::string> top_albums;
     httplib::Client client("http://ws.audioscrobbler.com");
     auto response = client.Get(("/2.0/?method=artist.gettopalbums&artist=" + name +
-                                "&api_key=" + apiKey + "&limit=" + std::to_string(limit) + "&format=json").c_str());
+            "&api_key=" + apiKey + "&limit=" + std::to_string(limit) + "&format=json").c_str());
     if (response -> status == 200)
     {
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end())
         {
-            std::cerr << "Error: " << data["message"] << std::endl;
+            std::cerr << "    Error: " << data["message"] << std::endl;
             return top_albums;
         }
         for (const auto& album : data["topalbums"]["album"])
@@ -31,7 +31,7 @@ std::vector<std::string> get_artist_top_albums(const std::string &name, const st
     }
     else
     {
-        std::cerr << "Error: Unable to reach data." << std::endl;
+        std::cerr << "    Error: Unable to reach data." << std::endl;
     }
     return top_albums;
 }
@@ -42,13 +42,13 @@ std::vector<std::string> get_artist_top_tracks(const std::string &name, const st
     std::vector<std::string> top_tracks;
     httplib::Client client("http://ws.audioscrobbler.com");
     auto response = client.Get(("/2.0/?method=artist.gettoptracks&artist=" + name +
-                                "&api_key=" + apiKey + "&limit=" + std::to_string(limit) + "&format=json").c_str());
+            "&api_key=" + apiKey + "&limit=" + std::to_string(limit) + "&format=json").c_str());
     if (response -> status == 200)
     {
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end())
         {
-            std::cerr << "Error: " << data["message"] << std::endl;
+            std::cerr << "    Error: " << data["message"] << std::endl;
             return top_tracks;
         }
         for (const auto& track : data["toptracks"]["track"])
@@ -58,7 +58,7 @@ std::vector<std::string> get_artist_top_tracks(const std::string &name, const st
     }
     else
     {
-        std::cerr << "Error: Unable to reach data." << std::endl;
+        std::cerr << "    Error: Unable to reach data." << std::endl;
     }
     return top_tracks;
 }
@@ -75,7 +75,7 @@ std::vector<std::string> get_artist_top_genres(const std::string &name, const st
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end())
         {
-            std::cerr << "Error: " << data["message"] << std::endl;
+            std::cerr << "    Error: " << data["message"] << std::endl;
             return top_genres;
         }
         for (const auto& genre : data["toptags"]["tag"])
@@ -85,7 +85,7 @@ std::vector<std::string> get_artist_top_genres(const std::string &name, const st
     }
     else
     {
-        std::cerr << "Error: Unable to reach data." << std::endl;
+        std::cerr << "    Error: Unable to reach data." << std::endl;
     }
     return top_genres;
 }

@@ -39,7 +39,9 @@ void displaySearchArtistMenu(const std::string &apiKey)
 
 void displaySearchTracksMenu(const std::string &apiKey)
 {
-
+    std::string trackName;
+    std::cout << "    Enter track name: ";
+    std::cin >> trackName;
 }
 
 
@@ -49,12 +51,12 @@ void displayMainMenu(const std::string &apiKey)
     int choice;
     std::cout << std::endl;
     std::cout << R"(
-                ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
-                ██╔══██╗░░██╗░░░░██╗░░██╔════╝████╗░████║
-                ██║░░╚═╝██████╗██████╗█████╗░░██╔████╔██║
-                ██║░░██╗╚═██╔═╝╚═██╔═╝██╔══╝░░██║╚██╔╝██║
-                ╚█████╔╝░░╚═╝░░░░╚═╝░░██║░░░░░██║░╚═╝░██║
-                ░╚════╝░░░░░░░░░░░░░░░╚═╝░░░░░╚═╝░░░░░╚═╝)";
+                      ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
+                      ██╔══██╗░░██╗░░░░██╗░░██╔════╝████╗░████║
+                      ██║░░╚═╝██████╗██████╗█████╗░░██╔████╔██║
+                      ██║░░██╗╚═██╔═╝╚═██╔═╝██╔══╝░░██║╚██╔╝██║
+                      ╚█████╔╝░░╚═╝░░░░╚═╝░░██║░░░░░██║░╚═╝░██║
+                      ░╚════╝░░░░░░░░░░░░░░░╚═╝░░░░░╚═╝░░░░░╚═╝)";
     std::cout << std::endl << std::endl;
 
     std::cout << R"(
@@ -71,6 +73,9 @@ void displayMainMenu(const std::string &apiKey)
             break;
         case 2:
             displaySearchArtistMenu(apiKey);
+            break;
+        case 3:
+            displaySearchTracksMenu(apiKey);
             break;
         default:
             std::cerr << "    Invalid choice. Please try again.\n";

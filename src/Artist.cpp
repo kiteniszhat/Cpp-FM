@@ -11,24 +11,36 @@ name_(name), apiKey_(apiKey), topAlbums_{get_artist_top_albums(name, apiKey)},
 topTracks_{get_artist_top_tracks(name, apiKey)}, genres_(get_artist_top_genres(name, apiKey))
 {}
 
+Artist::Artist(const Artist &artist) :
+name_(artist.getName()), apiKey_(artist.getApiKey()), topAlbums_(artist.getAlbums()),
+topTracks_(artist.getTracks()), genres_(artist.getGenres())
+{}
+
+
+
 std::string Artist::getName() const
 {
     return name_;
 }
 
-auto Artist::getAlbums() const
+std::vector<std::string> Artist::getAlbums() const
 {
     return topAlbums_;
 }
 
-auto Artist::getTracks() const
+std::vector<std::string> Artist::getTracks() const
 {
     return topTracks_;
 }
 
-auto Artist::getGenres() const
+std::vector<std::string> Artist::getGenres() const
 {
     return genres_;
+}
+
+std::string Artist::getApiKey() const
+{
+    return apiKey_;
 }
 
 void Artist::printInfo()
@@ -65,4 +77,6 @@ void Artist::printInfo()
         std::cerr << "\n    No genres found." << std::endl;
     }
 }
+
+
 
