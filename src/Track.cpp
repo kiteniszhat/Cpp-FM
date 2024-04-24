@@ -9,12 +9,27 @@ Track::Track(const std::string &artistName, const std::string &trackName, const 
 trackName_(trackName), apiKey_(apiKey), artist_(artistName, apiKey), playcount_(get_track_playcount(trackName, artistName, apiKey))
 {}
 
+
+
 std::string Track::getPlayCount() const
 {
     return playcount_;
 }
 
+Artist Track::getArtist() const
+{
+    return artist_;
+}
+
+std::string Track::getName() const
+{
+    return trackName_;
+}
+
 void Track::printInfo()
 {
-    std::cout << getPlayCount() << std::endl;
+    std::cout << "\n    Info about " << getName() << " made by " << getArtist().getName() << ":" << std::endl;
+    std::cout << "        • Number of plays: " << getPlayCount() << std::endl;
 }
+
+

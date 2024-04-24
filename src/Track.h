@@ -24,6 +24,8 @@ public:
     Track(const std::string &artistName, const std::string &trackName, const std::string &apiKey);
 
     std::string getPlayCount() const;
+    Artist getArtist() const;
+    std::string getName() const;
 
     void printInfo();
 };

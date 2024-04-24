@@ -30,5 +30,10 @@ std::string get_track_playcount(const std::string &trackName, const std::string 
     }
     return playcount;
 }
+
+
+
+
+
 // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=722d4a408cab1bb80b5f07fcc02fa690&artist=Grimes&track=Genesis&format=json
 #endif //LASTFMAPI_TRACKFUNCTIONS_H
