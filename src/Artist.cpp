@@ -35,24 +35,24 @@ void Artist::printInfo()
 {
     if (!topAlbums_.empty())
     {
-        std::cout << "\nTop tracks of " << name_ << ":\n";
+        std::cout << "\nTop albums of " << name_ << ":\n";
         for (size_t i = 0; i < topAlbums_.size(); ++i)
             std::cout << i + 1 << ". " << topAlbums_[i] << std::endl;
     }
     else
     {
-        std::cerr << "\nNo top tracks found." << std::endl;
+        std::cerr << "\nNo top albums found." << std::endl;
     }
 
     if (!topTracks_.empty())
     {
-        std::cout << "\nTop albums of " << name_ << ":\n";
+        std::cout << "\nTop tracks of " << name_ << ":\n";
         for (size_t i = 0; i < topTracks_.size(); ++i)
             std::cout << i + 1 << ". " << topTracks_[i] << std::endl;
     }
     else
     {
-        std::cerr << "\nNo top albums found." << std::endl;
+        std::cerr << "\nNo top tracks found." << std::endl;
     }
     if (!genres_.empty())
     {
