@@ -23,7 +23,7 @@ private:
 public:
     Artist(const std::string &name, const std::string &apiKey);
 
-    auto getName() const;
+    std::string getName() const;
     auto getAlbums() const;
     auto getTracks() const;
     auto getGenres() const;

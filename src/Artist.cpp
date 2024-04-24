@@ -11,7 +11,7 @@ name_(name), apiKey_(apiKey), topAlbums_{get_artist_top_albums(name, apiKey)},
 topTracks_{get_artist_top_tracks(name, apiKey)}, genres_(get_artist_top_genres(name, apiKey))
 {}
 
-auto Artist::getName() const
+std::string Artist::getName() const
 {
     return name_;
 }

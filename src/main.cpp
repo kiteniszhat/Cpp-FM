@@ -9,10 +9,20 @@
 
 int main()
 {
+    std::cout << std::endl;
+    std::cout << R"(
+    ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
+    ██╔══██╗░░██╗░░░░██╗░░██╔════╝████╗░████║
+    ██║░░╚═╝██████╗██████╗█████╗░░██╔████╔██║
+    ██║░░██╗╚═██╔═╝╚═██╔═╝██╔══╝░░██║╚██╔╝██║
+    ╚█████╔╝░░╚═╝░░░░╚═╝░░██║░░░░░██║░╚═╝░██║
+    ░╚════╝░░░░░░░░░░░░░░░╚═╝░░░░░╚═╝░░░░░╚═╝)";
+    std::cout << std::endl << std::endl;
+
     std::string apiKey = "722d4a408cab1bb80b5f07fcc02fa690";
     std::string artistName;
     std::cout << "Enter artist name: ";
-    std::cin >> artistName;
+    std::getline(std::cin, artistName);
     Artist artist(artistName, apiKey);
     artist.printInfo();
 }
