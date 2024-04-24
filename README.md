@@ -14,7 +14,6 @@ To run, you need the following libraries:
 ## Repository Guide
 
 ```bash
-.
 ├── README.md        # this README
 ├── LICENSE          # license file
 ├── CMakeLists.txt   # CMake file that contains instructions for configuring the build
@@ -27,5 +26,4 @@ To run, you need the following libraries:
 │   ├── Track.h
 │   ├── TrackFunctions.h
 │   └── main.cpp
-
 ```
