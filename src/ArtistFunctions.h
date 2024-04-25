@@ -10,6 +10,23 @@
 #include "httplib.h"
 #include "nlohmann/json.hpp"
 
+std::vector<std::string> splitArtist(const std::string &input)
+{
+    std::stringstream stringStreams(input);
+    std::vector<std::string> splitArray;
+    std::string word;
+    while (stringStreams >> word) {
+        splitArray.push_back(word);
+    }
+    while (splitArray[splitArray.size() - 1] != "<a") {
+        splitArray.pop_back();
+    }
+    splitArray.pop_back();
+    return splitArray;
+}
+
+
+
 std::vector<std::string> get_artist_top_albums(const std::string &name, const std::string &apiKey, int limit = 3)
 {
     std::vector<std::string> top_albums;
@@ -76,6 +93,29 @@ std::vector<std::string> get_artist_top_genres(const std::string &name, const st
         std::cerr << "    Error: Unable to reach data." << std::endl;
     }
     return top_genres;
+}
+
+
+
+std::string get_artist_info(const std::string &name, const std::string &apiKey)
+{
+    std::string info;
+    httplib::Client client("http://ws.audioscrobbler.com");
+    auto response = client.Get(("/2.0/?method=artist.getinfo&artist=" + name +
+            "&api_key=" + apiKey + "&format=json").c_str());
+    if (response -> status == 200){
+        auto data = nlohmann::json::parse(response -> body);
+        if (data.find("error") != data.end()){
+            std::cerr << "    Error: " << data["message"] << std::endl;
+            return info;
+        }
+        info = data["artist"]["bio"]["summary"].get<std::string>();
+        return info;
+    }
+    else{
+        std::cerr << "    Error: Unable to reach data." << std::endl;
+    }
+    return info;
 }
 
 #endif //LASTFMAPI_ARTISTFUNCTIONS_H

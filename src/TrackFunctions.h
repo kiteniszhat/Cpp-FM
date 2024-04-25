@@ -10,7 +10,7 @@
 #include "httplib.h"
 #include "nlohmann/json.hpp"
 
-std::vector<std::string> split(const std::string &input)
+std::vector<std::string> splitTracks(const std::string &input)
 {
     std::stringstream stringStreams(input);
     std::vector<std::string> splitArray;
@@ -18,9 +18,10 @@ std::vector<std::string> split(const std::string &input)
     while (stringStreams >> word) {
         splitArray.push_back(word);
     }
-    do{
+    while (splitArray[splitArray.size() - 1] != "<a") {
         splitArray.pop_back();
-    }while (splitArray[splitArray.size() - 1] != "\\u003Ca");
+    }
+    splitArray.pop_back();
     return splitArray;
 }
 
@@ -84,7 +85,17 @@ std::string get_track_info(const std::string &trackName, const std::string &arti
             std::cerr << "    Error: " << data["message"] << std::endl;
             return info;
         }
-        info = data["track"]["wiki"]["summary"].get<std::string>();
+        if (data["track"].find("wiki") != data["track"].end()) {
+            if (data["track"]["wiki"].is_object() && !data["track"]["wiki"].empty()) {
+                info = data["track"]["wiki"]["summary"].get<std::string>();
+            }
+            else {
+                std::cerr << "    \nError: No wiki information available for this track." << std::endl;
+            }
+        }
+        else {
+            std::cerr << "    \nError: No wiki information available for this track." << std::endl;
+        }
         return info;
     }
     else{

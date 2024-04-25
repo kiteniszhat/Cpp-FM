@@ -19,6 +19,7 @@ private:
     std::vector<std::string> topAlbums_;
     std::vector<std::string> topTracks_;
     std::vector<std::string> genres_;
+    std::string info_;
 
 public:
     Artist(const std::string &name, const std::string &apiKey);
@@ -29,6 +30,7 @@ public:
     std::vector<std::string> getAlbums() const;
     std::vector<std::string> getTracks() const;
     std::vector<std::string> getGenres() const;
+    std::string getInfo() const;
 
     void setName(const std::string &name);
 

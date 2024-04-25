@@ -47,13 +47,23 @@ void Track::printInfo()
     std::cout << "        • Album:           " << getAlbum() << std::endl;
     std::cout << std::endl;
     std::cout << "    " << getName() << " description from Last.fm:\n" << std::endl;
-    std::vector<std::string> info = split(getInfo());
+    std::vector<std::string> info = splitTracks(getInfo());
     for (int i = 0; i < info.size()/11 + 1; i ++) {
         std::cout << "    ";
         for (int j = 0; j < 11; j ++) {
+            if (i*11 + j >= info.size()){
+                break;
+            }
             std::cout << info[i*11 + j] << " ";
         }
         std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    std::string anything;
+    std::cout << "    Type anything to continue: ";
+    std::cin >> anything;
+    if (anything.empty()) {
+        std::cout << "    ;~~~~~~~~D";
     }
 }
 
