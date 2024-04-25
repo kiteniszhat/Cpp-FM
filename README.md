@@ -18,15 +18,21 @@ To run, you need the following libraries:
 ├── LICENSE          # license file
 ├── CMakeLists.txt   # CMake file that contains instructions for configuring the build
 ├── src
-│   ├── Album.cpp   # album class
+│   ├── Album.cpp    # album class
 │   ├── Album.h
 │   ├── AlbumFunctions.h
 │   ├── Artist.cpp   # artist class
 │   ├── Artist.h
 │   ├── ArtistFunctions.h
-│   ├── Menu.h      # file that makes app look cool in Terminal ;D
-│   ├── Track.cpp   # track class
+│   ├── Menu.h       # file that makes app look cool in Terminal ;D
+│   ├── Track.cpp    # track class
 │   ├── Track.h
 │   ├── TrackFunctions.h
+│   ├── User.cpp     # user class
+│   ├── User.h
+│   ├── UserFunctions.h
 │   └── main.cpp
 ```
+## License
+
+This project is licensed under the [MIT License](LICENSE).
