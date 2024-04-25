@@ -96,13 +96,6 @@ void Artist::printInfo()
         }
         std::cout << std::endl;
     }
-    std::cout << std::endl;
-    std::string anything;
-    std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
-    if (anything.empty()) {
-        std::cout << "    ;~~~~~~~~D";
-    }
 }
 
 void Artist::setName(const std::string &name)
