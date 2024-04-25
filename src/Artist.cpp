@@ -54,7 +54,7 @@ void Artist::printInfo()
     if (!getAlbums().empty())
     {
         std::cout << "\n    Top albums of " << getName() << ":\n";
-        for (size_t i = 0; i < getAlbums().size(); ++i)
+        for (int i = 0; i < getAlbums().size(); i ++)
             std::cout << "        " << i + 1 << ". " << getAlbums()[i] << std::endl;
     }
     else
@@ -65,7 +65,7 @@ void Artist::printInfo()
     if (!getTracks().empty())
     {
         std::cout << "\n    Top tracks of " << getName() << ":\n";
-        for (size_t i = 0; i < getTracks().size(); ++i)
+        for (int i = 0; i < getTracks().size(); i ++)
             std::cout << "        " << i + 1 << ". " << getTracks()[i] << std::endl;
     }
     else
@@ -75,7 +75,7 @@ void Artist::printInfo()
     if (!getGenres().empty())
     {
         std::cout << "\n    Genres of " << getName() << ":\n";
-        for (size_t i = 0; i < 3; ++i)
+        for (int i = 0; i < 3; i ++)
             std::cout << "        " << i + 1 << ". " << getGenres()[i] << std::endl;
     }
     else

@@ -12,6 +12,7 @@
 #include "Artist.h"
 #include "Track.h"
 #include "Album.h"
+#include "User.h"
 
 
 void executePowerShellCommand(const char* command)
@@ -22,9 +23,22 @@ void executePowerShellCommand(const char* command)
 }
 
 
-void displayLogInMenu(const std::string &apiKey)
+void displaySearchUser(const std::string &apiKey)
 {
-
+    std::string userName, timePeriod;
+    std::cout << "    Enter user name: ";
+    std::getline(std::cin >> std::ws, userName);
+    std::cout << "    Enter time period: ";
+    std::getline(std::cin >> std::ws, timePeriod);
+    User user(userName, apiKey, timePeriod);
+    user.printInfo();
+    std::cout << std::endl;
+    std::string anything;
+    std::cout << "    Type anything to continue: ";
+    std::cin >> anything;
+    if (anything.empty()) {
+        std::cout << "    ;~~~~~~~~D";
+    }
 }
 
 
@@ -106,15 +120,15 @@ void displayMainMenu(const std::string &apiKey)
     ----------------------------------------------------------------------------
            [1] Search User       [2] Search Artist       [3] Search Track
 
-           [4] Exit              [5] Search Album        [5] Make playlist
+           [4] Search Album      [5] Make playlist       [6] Exit
     ----------------------------------------------------------------------------)";
         std::cout << std::endl << std::endl;
-        std::cout << "    Choose number between [1, 2, 3, 4] : ";
+        std::cout << "    Choose a number between [1 - 6] : ";
         std::cin >> choice;
 
         switch (choice) {
             case 1:
-                displayLogInMenu(apiKey);
+                displaySearchUser(apiKey);
                 break;
             case 2:
                 displaySearchArtistMenu(apiKey);
@@ -123,10 +137,12 @@ void displayMainMenu(const std::string &apiKey)
                 displaySearchTracksMenu(apiKey);
                 break;
             case 4:
-                return;
-            case 5:
                 displaySearchAlbumMenu(apiKey);
                 break;
+            case 5:
+                break;
+            case 6:
+                return;
             default:
                 std::cerr << "    Invalid choice. Please try again.\n";
                 break;

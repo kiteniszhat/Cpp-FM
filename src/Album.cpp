@@ -37,13 +37,14 @@ void Album::printInfo() const
     if (!getAlbumTracks().empty())
     {
         std::cout << "\n    Track list of " << getName() << " by " << getArtist().getName() << ":\n";
-        for (size_t i = 0; i < getAlbumTracks().size(); ++i)
+        for (int i = 0; i < getAlbumTracks().size(); i ++)
             std::cout << "        " << i + 1 << ". " << getAlbumTracks()[i] << std::endl;
     }
     else
     {
         std::cerr << "\n    No tracks found." << std::endl;
     }
+
 }
 
 
