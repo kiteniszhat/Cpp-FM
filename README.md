@@ -18,9 +18,9 @@ To run, you need the following libraries:
 ├── LICENSE          # license file
 ├── CMakeLists.txt   # CMake file that contains instructions for configuring the build
 ├── src
-│   ├── ALbum.cpp   # album class
-│   ├── ALbum.h
-│   ├── ALbumFunctions.h
+│   ├── Album.cpp   # album class
+│   ├── Album.h
+│   ├── AlbumFunctions.h
 │   ├── Artist.cpp   # artist class
 │   ├── Artist.h
 │   ├── ArtistFunctions.h
