@@ -70,10 +70,10 @@ void displayMainMenu(const std::string &apiKey)
 
         std::cout << R"(
     ---------------------------------------------------------------------------
-            [1] Log in        [2] Search Artist        [3] Search Track
+    [1] Log in        [2] Search Artist        [3] Search Track        [4] Exit
     ---------------------------------------------------------------------------)";
         std::cout << std::endl << std::endl;
-        std::cout << "    Choose number between [1, 2, 3] : ";
+        std::cout << "    Choose number between [1, 2, 3, 4] : ";
         std::cin >> choice;
 
         switch (choice) {
@@ -86,6 +86,8 @@ void displayMainMenu(const std::string &apiKey)
             case 3:
                 displaySearchTracksMenu(apiKey);
                 break;
+            case 4:
+                return;
             default:
                 std::cerr << "    Invalid choice. Please try again.\n";
                 break;
