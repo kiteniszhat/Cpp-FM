@@ -10,6 +10,22 @@
 #include "httplib.h"
 #include "nlohmann/json.hpp"
 
+std::vector<std::string> split(const std::string &input)
+{
+    std::stringstream stringStreams(input);
+    std::vector<std::string> splitArray;
+    std::string word;
+    while (stringStreams >> word) {
+        splitArray.push_back(word);
+    }
+    do{
+        splitArray.pop_back();
+    }while (splitArray[splitArray.size() - 1] != "\\u003Ca");
+    return splitArray;
+}
+
+
+
 std::string get_track_playcount(const std::string &trackName, const std::string &artistName, const std::string &apiKey)
 {
     std::string playcount;
@@ -33,7 +49,49 @@ std::string get_track_playcount(const std::string &trackName, const std::string 
 
 
 
+std::string get_track_album(const std::string &trackName, const std::string &artistName, const std::string &apiKey)
+{
+    std::string album;
+    httplib::Client client("http://ws.audioscrobbler.com");
+    auto response = client.Get(("/2.0/?method=track.getInfo&api_key=" + apiKey +
+            "&artist=" + artistName + "&track=" + trackName + "&format=json").c_str());
+    if (response -> status == 200){
+        auto data = nlohmann::json::parse(response -> body);
+        if (data.find("error") != data.end()){
+            std::cerr << "    Error: " << data["message"] << std::endl;
+            return album;
+        }
+        album = data["track"]["album"]["title"].get<std::string>();
+        return album;
+    }
+    else{
+        std::cerr << "    Error: Unable to reach data." << std::endl;
+    }
+    return album;
+}
 
+
+
+std::string get_track_info(const std::string &trackName, const std::string &artistName, const std::string &apiKey)
+{
+    std::string info;
+    httplib::Client client("http://ws.audioscrobbler.com");
+    auto response = client.Get(("/2.0/?method=track.getInfo&api_key=" + apiKey +
+            "&artist=" + artistName + "&track=" + trackName + "&format=json").c_str());
+    if (response -> status == 200){
+        auto data = nlohmann::json::parse(response -> body);
+        if (data.find("error") != data.end()){
+            std::cerr << "    Error: " << data["message"] << std::endl;
+            return info;
+        }
+        info = data["track"]["wiki"]["summary"].get<std::string>();
+        return info;
+    }
+    else{
+        std::cerr << "    Error: Unable to reach data." << std::endl;
+    }
+    return info;
+}
 
 // http://ws.audioscrobbler.com/2.0/?method=track.getInfo&api_key=722d4a408cab1bb80b5f07fcc02fa690&artist=Grimes&track=Genesis&format=json
 #endif //LASTFMAPI_TRACKFUNCTIONS_H

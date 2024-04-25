@@ -18,6 +18,8 @@ private:
     std::string trackName_;
     std::string apiKey_;
     std::string playcount_;
+    std::string album_;
+    std::string info_;
     Artist artist_;
 
 public:
@@ -26,6 +28,8 @@ public:
     std::string getPlayCount() const;
     Artist getArtist() const;
     std::string getName() const;
+    std::string getAlbum() const;
+    std::string getInfo() const;
 
     void printInfo();
 };
