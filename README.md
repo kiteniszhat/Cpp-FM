@@ -11,7 +11,7 @@ Terminal-based C++ application utilizing the nlohmann json library for parsing J
 ## Libraries Used
   - **[nlohmann's JSON](https://github.com/nlohmann/json)**: A library for making HTTP requests and retrieving data from APIs
   - **[httplib](https://github.com/yhirose/cpp-httplib)**: A library for parsing JSON data
-  - 
+
 ## Repository Guide
 ```bash
 ├── README.md        # this README
