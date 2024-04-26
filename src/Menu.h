@@ -28,8 +28,53 @@ void displaySearchUser(const std::string &apiKey)
     std::string userName, timePeriod;
     std::cout << "    Enter user name: ";
     std::getline(std::cin >> std::ws, userName);
-    std::cout << "    Enter time period: ";
-    std::getline(std::cin >> std::ws, timePeriod);
+    int choice;
+
+    executePowerShellCommand("clear");
+    std::cout << std::endl;
+    std::cout << R"(
+                     ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
+                     ██╔══██╗░░██╗░░░░██╗░░██╔════╝████╗░████║
+                     ██║░░╚═╝██████╗██████╗█████╗░░██╔████╔██║
+                     ██║░░██╗╚═██╔═╝╚═██╔═╝██╔══╝░░██║╚██╔╝██║
+                     ╚█████╔╝░░╚═╝░░░░╚═╝░░██║░░░░░██║░╚═╝░██║
+                     ░╚════╝░░░░░░░░░░░░░░░╚═╝░░░░░╚═╝░░░░░╚═╝)";
+    std::cout << std::endl << std::endl;
+
+    std::cout << R"(
+    ----------------------------------------------------------------------------
+                The time period over which to retrieve the data for
+    ----------------------------------------------------------------------------
+            [1] last 7 days       [2] last month       [3] last 3 months
+
+            [4] last 6 months     [5] last 12 months   [6] overall
+    ----------------------------------------------------------------------------)";
+    std::cout << std::endl << std::endl;
+    std::cout << "    Choose a number between [1 - 6] : ";
+    std::cin >> choice;
+    switch (choice) {
+        case 1:
+            timePeriod = "7day";
+            break;
+        case 2:
+            timePeriod = "1month";
+            break;
+        case 3:
+            timePeriod = "3month";
+            break;
+        case 4:
+            timePeriod = "6month";
+            break;
+        case 5:
+            timePeriod = "12month";
+            break;
+        case 6:
+            timePeriod = "overall";
+            break;
+        default:
+            std::cerr << "    Invalid choice. Please try again.\n";
+            return;
+    }
     User user(userName, apiKey, timePeriod);
     user.printInfo();
     std::cout << std::endl;
@@ -142,6 +187,7 @@ void displayMainMenu(const std::string &apiKey)
             case 5:
                 break;
             case 6:
+                executePowerShellCommand("clear");
                 return;
             default:
                 std::cerr << "    Invalid choice. Please try again.\n";

@@ -7,7 +7,8 @@
 
 User::User(const std::string &name, const std::string &apiKey, const std::string &timePeriod) :
 name_(name), apiKey_(apiKey), timePeriod_(timePeriod), recentTracks_(get_user_recent_tracks(name, apiKey)),
-topTracks_(get_user_top_tracks(name, apiKey, timePeriod)), topAlbums_(), topArtists_()
+topTracks_(get_user_top_tracks(name, apiKey, timePeriod)), topAlbums_(get_user_top_albums(name, apiKey, timePeriod)),
+topArtists_(get_user_top_artists(name, apiKey, timePeriod))
 {}
 
 
@@ -49,6 +50,19 @@ std::vector<std::string> User::getTopArtists() const
 
 void User::printInfo() const
 {
+    std::string timePeriod;
+    if (getTimePeriod() == "7day")
+        timePeriod = " in last 7 days";
+    else if (getTimePeriod() == "1month")
+        timePeriod = " in last month";
+    else if (getTimePeriod() == "3month")
+        timePeriod = " in last 3 months";
+    else if (getTimePeriod() == "6month")
+        timePeriod = " in last 6 months";
+    else if (getTimePeriod() == "12month")
+        timePeriod = " in last 12 months";
+    else if (getTimePeriod() == "overall")
+        timePeriod = " in overall";
     if (!getRecentTracks().empty())
     {
         std::cout << "\n    Recently listened tracks by user " << getName() << ":\n";
@@ -61,12 +75,32 @@ void User::printInfo() const
     }
     if (!getTopTracks().empty())
     {
-        std::cout << "\n    Most listened tracks by user " << getName() << " in last " << getTimePeriod() << ":\n";
+        std::cout << "\n    Most listened tracks by user " << getName() << timePeriod << ":\n";
         for (int i = 0; i < 10; i ++)
             std::cout << "        " << i + 1 << ". " << getTopTracks()[i] << std::endl;
     }
     else
     {
         std::cerr << "\n    No user top tracks found." << std::endl;
+    }
+    if (!getTopAlbums().empty())
+    {
+        std::cout << "\n    Most listened albums by user " << getName() << timePeriod << ":\n";
+        for (int i = 0; i < 10; i ++)
+            std::cout << "        " << i + 1 << ". " << getTopAlbums()[i] << std::endl;
+    }
+    else
+    {
+        std::cerr << "\n    No user top albums found." << std::endl;
+    }
+    if (!getTopArtists().empty())
+    {
+        std::cout << "\n    Most listened artists by user " << getName() << timePeriod << ":\n";
+        for (int i = 0; i < 10; i ++)
+            std::cout << "        " << i + 1 << ". " << getTopArtists()[i] << std::endl;
+    }
+    else
+    {
+        std::cerr << "\n    No user top artists found." << std::endl;
     }
 }
