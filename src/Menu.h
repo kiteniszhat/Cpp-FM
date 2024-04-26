@@ -73,6 +73,7 @@ void displaySearchUser(const std::string &apiKey)
             break;
         default:
             std::cerr << "    Invalid choice. Please try again.\n";
+            executePowerShellCommand("clear");
             return;
     }
     User user(userName, apiKey, timePeriod);
@@ -84,6 +85,7 @@ void displaySearchUser(const std::string &apiKey)
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
+    executePowerShellCommand("clear");
 }
 
 
@@ -145,6 +147,19 @@ void displaySearchAlbumMenu(const std::string &apiKey)
 }
 
 
+void displayMakePlaylistMenu(const std::string &apiKey)
+{
+    std::cout << "    Not implemented yet.";
+    std::cout << std::endl;
+    std::string anything;
+    std::cout << "    Type anything to continue: ";
+    std::cin >> anything;
+    if (anything.empty()) {
+        std::cout << "    ;~~~~~~~~D";
+    }
+}
+
+
 void displayMainMenu(const std::string &apiKey)
 {
     executePowerShellCommand("chcp 65001");
@@ -185,6 +200,7 @@ void displayMainMenu(const std::string &apiKey)
                 displaySearchAlbumMenu(apiKey);
                 break;
             case 5:
+                displayMakePlaylistMenu(apiKey);
                 break;
             case 6:
                 executePowerShellCommand("clear");
