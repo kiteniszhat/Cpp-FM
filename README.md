@@ -68,8 +68,8 @@ The Doors description from Last.fm:
 
 ## Libraries Used
 
-  - **[nlohmann's JSON](https://github.com/nlohmann/json)**: A library for making HTTP requests and retrieving data from APIs
-  - **[httplib](https://github.com/yhirose/cpp-httplib)**: A library for parsing JSON data
+  - **[nlohmann's JSON](https://github.com/nlohmann/json)**: A library for parsing JSON data
+  - **[httplib](https://github.com/yhirose/cpp-httplib)**: A library for making HTTP requests and retrieving data from APIs
 
 <a name="license"></a>
 
