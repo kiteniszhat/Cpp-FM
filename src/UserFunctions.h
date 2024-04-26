@@ -34,6 +34,8 @@ std::vector<std::string> get_user_recent_tracks(const std::string &name, const s
     return recent_tracks;
 }
 
+
+
 std::vector<std::string> get_user_top_tracks(const std::string &name, const std::string &apiKey, const std::string &timePeriod)
 {
     std::vector<std::string> top_tracks;
@@ -59,6 +61,8 @@ std::vector<std::string> get_user_top_tracks(const std::string &name, const std:
     return top_tracks;
 }
 
+
+
 std::vector<std::string> get_user_top_albums(const std::string &name, const std::string &apiKey, const std::string &timePeriod)
 {
     std::vector<std::string> top_albums;
@@ -83,6 +87,8 @@ std::vector<std::string> get_user_top_albums(const std::string &name, const std:
     }
     return top_albums;
 }
+
+
 
 std::vector<std::string> get_user_top_artists(const std::string &name, const std::string &apiKey, const std::string &timePeriod)
 {

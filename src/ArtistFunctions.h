@@ -50,6 +50,7 @@ std::vector<std::string> get_artist_top_albums(const std::string &name, const st
 }
 
 
+
 std::vector<std::string> get_artist_top_tracks(const std::string &name, const std::string &apiKey, int limit = 5)
 {
     std::vector<std::string> top_tracks;
@@ -71,6 +72,7 @@ std::vector<std::string> get_artist_top_tracks(const std::string &name, const st
     }
     return top_tracks;
 }
+
 
 
 std::vector<std::string> get_artist_top_genres(const std::string &name, const std::string &apiKey, int limit = 3)

@@ -36,7 +36,8 @@ add_executable(lastfmAPI
         src/AlbumFunctions.h
         src/User.cpp
         src/User.h
-        src/UserFunctions.h)
+        src/UserFunctions.h
+        src/Playlist.h)
 target_include_directories(lastfmAPI PRIVATE ../../../../../src)
 file(GLOB sources "src/*.cpp" "src/*.h")
 target_sources(lastfmAPI PRIVATE ${sources})

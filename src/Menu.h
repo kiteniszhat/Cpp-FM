@@ -13,6 +13,7 @@
 #include "Track.h"
 #include "Album.h"
 #include "User.h"
+#include "Playlist.h"
 
 
 void executePowerShellCommand(const char* command)
@@ -149,14 +150,69 @@ void displaySearchAlbumMenu(const std::string &apiKey)
 
 void displayMakePlaylistMenu(const std::string &apiKey)
 {
-    std::cout << "    Not implemented yet.";
+//    std::cout << "    Not implemented yet.";
+//    std::cout << std::endl;
+    std::string username, timePeriod;
+    std::cout << "    Enter your Last.fm username: ";
+    std::getline(std::cin >> std::ws, username);
+    int choice;
+
+    executePowerShellCommand("clear");
     std::cout << std::endl;
+    std::cout << R"(
+                     ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
+                     ██╔══██╗░░██╗░░░░██╗░░██╔════╝████╗░████║
+                     ██║░░╚═╝██████╗██████╗█████╗░░██╔████╔██║
+                     ██║░░██╗╚═██╔═╝╚═██╔═╝██╔══╝░░██║╚██╔╝██║
+                     ╚█████╔╝░░╚═╝░░░░╚═╝░░██║░░░░░██║░╚═╝░██║
+                     ░╚════╝░░░░░░░░░░░░░░░╚═╝░░░░░╚═╝░░░░░╚═╝)";
+    std::cout << std::endl << std::endl;
+
+    std::cout << R"(
+    ----------------------------------------------------------------------------
+                    Playlist will be based on user's top tracks
+    ----------------------------------------------------------------------------
+             The time period over which to retrieve the top tracks for
+    ----------------------------------------------------------------------------
+            [1] last 7 days       [2] last month       [3] last 3 months
+
+            [4] last 6 months     [5] last 12 months   [6] overall
+    ----------------------------------------------------------------------------)";
+    std::cout << std::endl << std::endl;
+    std::cout << "    Choose a number between [1 - 6] : ";
+    std::cin >> choice;
+    switch (choice) {
+        case 1:
+            timePeriod = "7day";
+            break;
+        case 2:
+            timePeriod = "1month";
+            break;
+        case 3:
+            timePeriod = "3month";
+            break;
+        case 4:
+            timePeriod = "6month";
+            break;
+        case 5:
+            timePeriod = "12month";
+            break;
+        case 6:
+            timePeriod = "overall";
+            break;
+        default:
+            std::cerr << "    Invalid choice. Please try again.\n";
+            executePowerShellCommand("clear");
+            return;
+    }
+    makePlaylist(username, timePeriod, apiKey);
     std::string anything;
     std::cout << "    Type anything to continue: ";
     std::cin >> anything;
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
+    executePowerShellCommand("clear");
 }
 
 
