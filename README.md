@@ -93,6 +93,7 @@ This project is licensed under the [MIT License](LICENSE).
 │   ├── Artist.h
 │   ├── ArtistFunctions.h
 │   ├── Menu.h       # file that makes app look cool in Terminal ;D
+│   ├── Playlist.h   # header with making playlist functionality
 │   ├── Track.cpp    # track class
 │   ├── Track.h
 │   ├── TrackFunctions.h
