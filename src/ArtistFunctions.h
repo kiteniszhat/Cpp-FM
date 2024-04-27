@@ -60,16 +60,16 @@ std::vector<std::string> get_artist_top_tracks(const std::string &name, const st
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return top_tracks;
         }
         for (const auto& track : data["toptracks"]["track"]){
             top_tracks.push_back(track["name"]);
         }
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return top_tracks;
 }
 
@@ -84,16 +84,16 @@ std::vector<std::string> get_artist_top_genres(const std::string &name, const st
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return top_genres;
         }
         for (const auto& genre : data["toptags"]["tag"]){
             top_genres.push_back(genre["name"]);
         }
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return top_genres;
 }
 
@@ -108,15 +108,15 @@ std::string get_artist_info(const std::string &name, const std::string &apiKey)
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return info;
         }
         info = data["artist"]["bio"]["summary"].get<std::string>();
         return info;
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return info;
 }
 

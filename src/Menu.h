@@ -29,7 +29,7 @@ void displaySearchUser(const std::string &apiKey)
     std::string userName, timePeriod;
     std::cout << "    Enter user name: ";
     std::getline(std::cin >> std::ws, userName);
-    int choice;
+    std::string choice;
 
     executePowerShellCommand("clear");
     std::cout << std::endl;
@@ -52,8 +52,9 @@ void displaySearchUser(const std::string &apiKey)
     ----------------------------------------------------------------------------)";
     std::cout << std::endl << std::endl;
     std::cout << "    Choose a number between [1 - 6] : ";
-    std::cin >> choice;
-    switch (choice) {
+    std::getline(std::cin >> std::ws, choice);
+    int num = stoi(choice);
+    switch (num) {
         case 1:
             timePeriod = "7day";
             break;
@@ -82,7 +83,7 @@ void displaySearchUser(const std::string &apiKey)
     std::cout << std::endl;
     std::string anything;
     std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
+    std::getline(std::cin >> std::ws, anything);
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
@@ -101,7 +102,7 @@ void displaySearchArtistMenu(const std::string &apiKey)
     std::cout << std::endl;
     std::string anything;
     std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
+    std::getline(std::cin >> std::ws, anything);
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
@@ -122,7 +123,7 @@ void displaySearchTracksMenu(const std::string &apiKey)
     std::cout << std::endl;
     std::string anything;
     std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
+    std::getline(std::cin >> std::ws, anything);
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
@@ -141,7 +142,7 @@ void displaySearchAlbumMenu(const std::string &apiKey)
     std::cout << std::endl;
     std::string anything;
     std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
+    std::getline(std::cin >> std::ws, anything);
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
@@ -155,7 +156,7 @@ void displayMakePlaylistMenu(const std::string &apiKey)
     std::string username, timePeriod;
     std::cout << "    Enter your Last.fm username: ";
     std::getline(std::cin >> std::ws, username);
-    int choice;
+    std::string choice;
 
     executePowerShellCommand("clear");
     std::cout << std::endl;
@@ -180,8 +181,9 @@ void displayMakePlaylistMenu(const std::string &apiKey)
     ----------------------------------------------------------------------------)";
     std::cout << std::endl << std::endl;
     std::cout << "    Choose a number between [1 - 6] : ";
-    std::cin >> choice;
-    switch (choice) {
+    std::getline(std::cin >> std::ws, choice);
+    int num = stoi(choice);
+    switch (num) {
         case 1:
             timePeriod = "7day";
             break;
@@ -208,7 +210,7 @@ void displayMakePlaylistMenu(const std::string &apiKey)
     makePlaylist(username, timePeriod, apiKey);
     std::string anything;
     std::cout << "    Type anything to continue: ";
-    std::cin >> anything;
+    std::getline(std::cin >> std::ws, anything);
     if (anything.empty()) {
         std::cout << "    ;~~~~~~~~D";
     }
@@ -221,7 +223,7 @@ void displayMainMenu(const std::string &apiKey)
     executePowerShellCommand("chcp 65001");
     while (true) {
         executePowerShellCommand("clear");
-        int choice;
+        std::string choice;
         std::cout << std::endl;
         std::cout << R"(
                      ░█████╗░░░░░░░░░░░░░░░███████╗███╗░░░███╗
@@ -240,9 +242,9 @@ void displayMainMenu(const std::string &apiKey)
     ----------------------------------------------------------------------------)";
         std::cout << std::endl << std::endl;
         std::cout << "    Choose a number between [1 - 6] : ";
-        std::cin >> choice;
-
-        switch (choice) {
+        std::getline(std::cin >> std::ws, choice);
+        int num = stoi(choice);
+        switch (num) {
             case 1:
                 displaySearchUser(apiKey);
                 break;
@@ -263,7 +265,6 @@ void displayMainMenu(const std::string &apiKey)
                 return;
             default:
                 std::cerr << "    Invalid choice. Please try again.\n";
-                break;
         }
     }
 }

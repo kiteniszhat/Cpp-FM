@@ -84,17 +84,23 @@ void Artist::printInfo()
     }
 
     std::cout << std::endl;
-    std::cout << "    " << getName() << " description from Last.fm:\n" << std::endl;
-    std::vector<std::string> info = splitArtist(getInfo());
-    for (int i = 0; i < info.size()/11 + 1; i ++) {
-        std::cout << "    ";
-        for (int j = 0; j < 11; j ++) {
-            if (i*11 + j >= info.size()){
-                break;
+    if (!getInfo().empty()) {
+        std::cout << "    " << getName() << " description from Last.fm:\n" << std::endl;
+        std::vector<std::string> info = splitArtist(getInfo());
+        for (int i = 0; i < info.size() / 11 + 1; i++) {
+            std::cout << "    ";
+            for (int j = 0; j < 11; j++) {
+                if (i * 11 + j >= info.size()) {
+                    break;
+                }
+                std::cout << info[i * 11 + j] << " ";
             }
-            std::cout << info[i*11 + j] << " ";
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+    }
+    else
+    {
+        std::cerr << "\n    No info from Last.fm found." << std::endl;
     }
 }
 

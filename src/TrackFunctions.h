@@ -59,7 +59,7 @@ std::string get_track_album(const std::string &trackName, const std::string &art
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return album;
         }
         album = data["track"]["album"]["title"].get<std::string>();
@@ -82,7 +82,7 @@ std::string get_track_info(const std::string &trackName, const std::string &arti
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return info;
         }
         if (data["track"].find("wiki") != data["track"].end()) {

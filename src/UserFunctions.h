@@ -55,9 +55,9 @@ std::vector<std::string> get_user_top_tracks(const std::string &name, const std:
             top_tracks.push_back(artist + " - " + trackName + "    [" + playcount + " plays]");
         }
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return top_tracks;
 }
 
@@ -82,9 +82,9 @@ std::vector<std::string> get_user_top_albums(const std::string &name, const std:
             top_albums.push_back(artist + " - " + albumName + "    [" + playcount + " plays]");
         }
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return top_albums;
 }
 
@@ -108,9 +108,9 @@ std::vector<std::string> get_user_top_artists(const std::string &name, const std
             top_artists.push_back(artistName + "    [" + playcount + " plays]");
         }
     }
-    else{
-        std::cerr << "    Error: Unable to reach data." << std::endl;
-    }
+//    else{
+//        std::cerr << "    Error: Unable to reach data." << std::endl;
+//    }
     return top_artists;
 }
 

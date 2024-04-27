@@ -42,21 +42,34 @@ std::string Track::getInfo() const
 void Track::printInfo()
 {
     std::cout << std::endl;
-    std::cout << "    Info about " << getName() << " made by " << getArtist().getName() << ":" << std::endl;
-    std::cout << "        • Number of plays: " << getPlayCount() << std::endl;
-    std::cout << "        • Album:           " << getAlbum() << std::endl;
+    if (!getPlayCount().empty() && !getAlbum().empty()) {
+        std::cout << "    Info about " << getName() << " made by " << getArtist().getName() << ":" << std::endl;
+        std::cout << "        • Number of plays: " << getPlayCount() << std::endl;
+        std::cout << "        • Album:           " << getAlbum() << std::endl;
+    }
+    else
+    {
+        std::cerr << "\n    No info found." << std::endl;
+        return;
+    }
     std::cout << std::endl;
-    std::cout << "    " << getName() << " description from Last.fm:\n" << std::endl;
-    std::vector<std::string> info = splitTracks(getInfo());
-    for (int i = 0; i < info.size()/11 + 1; i ++) {
-        std::cout << "    ";
-        for (int j = 0; j < 11; j ++) {
-            if (i*11 + j >= info.size()){
-                break;
+    if (!getInfo().empty()) {
+        std::cout << "    " << getName() << " description from Last.fm:\n" << std::endl;
+        std::vector<std::string> info = splitTracks(getInfo());
+        for (int i = 0; i < info.size() / 11 + 1; i++) {
+            std::cout << "    ";
+            for (int j = 0; j < 11; j++) {
+                if (i * 11 + j >= info.size()) {
+                    break;
+                }
+                std::cout << info[i * 11 + j] << " ";
             }
-            std::cout << info[i*11 + j] << " ";
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
+    }
+    else
+    {
+        std::cerr << "\n    No description from Last.fm found." << std::endl;
     }
 }
 
