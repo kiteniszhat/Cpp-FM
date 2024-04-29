@@ -23,6 +23,16 @@ void executePowerShellCommand(const char* command)
     system(fullCommand.c_str());
 }
 
+int str_to_int(std::string input)
+{
+    if ((input[0] == '0' || input[0] == '1' || input[0] == '2' || input[0] == '3' || input[0] == '4' || input[0] == '5' || input[0] == '6')) {
+        if (input.size() > 1)
+            return 99;
+        return stoi(input);
+    }
+    return 99;
+}
+
 
 void displaySearchUser(const std::string &apiKey)
 {
@@ -53,7 +63,7 @@ void displaySearchUser(const std::string &apiKey)
     std::cout << std::endl << std::endl;
     std::cout << "    Choose a number between [1 - 6] : ";
     std::getline(std::cin >> std::ws, choice);
-    int num = stoi(choice);
+    int num = str_to_int(choice);
     switch (num) {
         case 1:
             timePeriod = "7day";
@@ -182,7 +192,7 @@ void displayMakePlaylistMenu(const std::string &apiKey)
     std::cout << std::endl << std::endl;
     std::cout << "    Choose a number between [1 - 6] : ";
     std::getline(std::cin >> std::ws, choice);
-    int num = stoi(choice);
+    int num = str_to_int(choice);
     switch (num) {
         case 1:
             timePeriod = "7day";
@@ -243,7 +253,7 @@ void displayMainMenu(const std::string &apiKey)
         std::cout << std::endl << std::endl;
         std::cout << "    Choose a number between [1 - 6] : ";
         std::getline(std::cin >> std::ws, choice);
-        int num = stoi(choice);
+        int num = str_to_int(choice);
         switch (num) {
             case 1:
                 displaySearchUser(apiKey);
