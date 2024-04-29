@@ -20,7 +20,7 @@ std::string get_similar_track(const std::string &artistName, const std::string &
     if (response -> status == 200){
         auto data = nlohmann::json::parse(response -> body);
         if (data.find("error") != data.end()){
-            std::cerr << "    Error: " << data["message"] << std::endl;
+//            std::cerr << "    Error: " << data["message"] << std::endl;
             return similar;
         }
         if (data["similartracks"].find("track") != data["similartracks"].end()) {
@@ -29,11 +29,11 @@ std::string get_similar_track(const std::string &artistName, const std::string &
                 std::string artist = data["similartracks"]["track"][5]["artist"]["name"].get<std::string>();
                 similar = artist + " - " + track;
             }
-            else
-                std::cerr << "    Error: No similar tracks found." << std::endl;
+//            else
+//                std::cerr << "    Error: No similar tracks found." << std::endl;
         }
-        else
-            std::cerr << "    Error: No similar tracks found." << std::endl;
+//        else
+//            std::cerr << "    Error: No similar tracks found." << std::endl;
     }
     else{
         std::cerr << "    Error: Unable to reach data." << std::endl;
@@ -68,10 +68,19 @@ void makePlaylist(const std::string &userName, const std::string &timePeriod, co
         std::cout <<  "        " << i + 1 << ". " << topTracks[i] << std::endl;
     std::cout << std::endl;
     std::cout << "    New playlist based on user top tracks" << timePeriod_printReady << ":\n";
-    for (int i = 0; i < 10; i ++){
+    int limit = 10;
+    int diff = 0;
+    for (int i = 0; i < limit; i ++) {
         if (std::regex_match(topTracks[i], match, pattern)) {
-            similarTracks.push_back(get_similar_track(match[1], match[2] , apiKey));
-            std::cout << "        " << i + 1 << ". " << similarTracks[i] << std::endl;
+            std::string track = get_similar_track(match[1], match[2] , apiKey);
+            if (!track.empty()) {
+                similarTracks.push_back(track);
+                std::cout << "        " << i + 1 - diff << ". " << similarTracks[i - diff] << std::endl;
+            }
+            else {
+                limit ++;
+                diff ++;
+            }
         }
     }
     std::cout << std::endl;
