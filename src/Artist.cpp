@@ -93,6 +93,7 @@ void Artist::printInfo()
     {
         std::cerr << "\n    No info from Last.fm found." << std::endl;
     }
+    std::cout << std::endl;
 }
 
 void Artist::setName(const std::string &name)

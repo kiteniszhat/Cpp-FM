@@ -63,11 +63,12 @@ void makePlaylist(const std::string &userName, const std::string &timePeriod, co
         timePeriod_printReady = " in last 12 months";
     else if (timePeriod == "overall")
         timePeriod_printReady = " in overall";
-    std::cout << "    User top tracks" << timePeriod_printReady << " for reference" << ":\n";
+    std::cout << std::endl;
+    std::cout << "    User's top tracks" << timePeriod_printReady << " for reference" << ":\n";
     for (int i = 0; i < 10; i ++)
         std::cout <<  "        " << i + 1 << ". " << topTracks[i] << std::endl;
     std::cout << std::endl;
-    std::cout << "    New playlist based on user top tracks" << timePeriod_printReady << ":\n";
+    std::cout << "    New playlist based on user's top tracks" << timePeriod_printReady << ":\n";
     int limit = 10;
     int diff = 0;
     for (int i = 0; i < limit; i ++) {

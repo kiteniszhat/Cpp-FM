@@ -62,6 +62,7 @@ void Track::printInfo()
     {
         std::cerr << "\n    No description from Last.fm found." << std::endl;
     }
+    std::cout << std::endl;
 }
 
 
