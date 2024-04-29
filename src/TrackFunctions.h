@@ -27,6 +27,25 @@ std::vector<std::string> splitTracks(const std::string &input)
 
 
 
+void printTrackDescription(const std::vector<std::string> &input)
+{
+    int charAmmount = 0;
+    std::cout << "    ";
+    for (const auto &word : input) {
+        charAmmount += word.size();
+        if (charAmmount <= 76 ) {
+            std::cout << word << " ";
+            charAmmount ++;
+        }
+        else {
+            std::cout << std::endl << "    " << word << " ";
+            charAmmount = word.size() + 1;
+        }
+    }
+}
+
+
+
 std::string get_track_playcount(const std::string &trackName, const std::string &artistName, const std::string &apiKey)
 {
     std::string playcount;

@@ -30,8 +30,6 @@ int str_to_int(std::string input)
             if (input[i] != ' ')
                 return 99;
         }
-//        if (input.size() > 1)
-//            return 99;
         return stoi(input);
     }
     return 99;

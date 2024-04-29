@@ -25,7 +25,22 @@ std::vector<std::string> splitArtist(const std::string &input)
     return splitArray;
 }
 
-
+void printArtistDescription(const std::vector<std::string> &input)
+{
+    int charAmmount = 0;
+    std::cout << "    ";
+    for (const auto &word : input) {
+        charAmmount += word.size();
+        if (charAmmount <= 76 ) {
+            std::cout << word << " ";
+            charAmmount ++;
+        }
+        else {
+            std::cout << std::endl << "    " << word << " ";
+            charAmmount = word.size() + 1;
+        }
+    }
+}
 
 std::vector<std::string> get_artist_top_albums(const std::string &name, const std::string &apiKey, int limit = 3)
 {
