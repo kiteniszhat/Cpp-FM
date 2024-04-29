@@ -26,8 +26,12 @@ void executePowerShellCommand(const char* command)
 int str_to_int(std::string input)
 {
     if ((input[0] == '0' || input[0] == '1' || input[0] == '2' || input[0] == '3' || input[0] == '4' || input[0] == '5' || input[0] == '6')) {
-        if (input.size() > 1)
-            return 99;
+        for (int i = 1; i < input.size(); i ++) {
+            if (input[i] != ' ')
+                return 99;
+        }
+//        if (input.size() > 1)
+//            return 99;
         return stoi(input);
     }
     return 99;
